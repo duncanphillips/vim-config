@@ -14,3 +14,4 @@ install:
     ln ~/vim-config/.vimrc ~/.vimrc                 
     ln ~/vim-config/.vimrc.bundles ~/.vimrc.bundles 
     vim +BundleInstall +qall                        
+    cd .vim/bundle/Command-T/ruby/command-t/ && ruby extconf.rb && make && cd -
