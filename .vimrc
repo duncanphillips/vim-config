@@ -287,6 +287,8 @@
 
      " PyMode {
         let g:pymode_lint_checker = "pyflakes"
+        nmap } ]M
+        nmap { [M
      " }
 
      " command-t {
