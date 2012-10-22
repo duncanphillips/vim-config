@@ -1,4 +1,4 @@
-Vim config files
+= Vim config files =
 
 Requires:
 
@@ -8,6 +8,9 @@ vim custom build with:
     perl
     utf-8
 
-requires vundle
-
-run: BundleInstall from vim
+install:
+    git clone https://github.com/gmarik/vundle.git ~/vim-config/.vim/bundle/vundle
+    ln ~/vim-config/.vim ~/.vim                     
+    ln ~/vim-config/.vimrc ~/.vimrc                 
+    ln ~/vim-config/.vimrc.bundles ~/.vimrc.bundles 
+    vim +BundleInstall +qall                        
