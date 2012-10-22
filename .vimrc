@@ -275,6 +275,7 @@
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         nmap <leader>sl :SessionList<CR>
         nmap <leader>ss :SessionSave<CR>
+        let sessionman_save_on_exit=0
      " }
 
      " Buffer explorer {
