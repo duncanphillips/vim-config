@@ -124,7 +124,7 @@
     set scrolljump=5                " lines to scroll when cursor leaves screen
     set scrolloff=8                 " minimum lines to keep above and below cursor
     set list
-    set listchars=extends:# " Highlight problematic whitespace
+    set listchars=tab:\ \ ,extends:# " Highlight problematic whitespace
 " }
 
 " Formatting {
@@ -186,7 +186,7 @@
     "nmap <silent> <leader>/ :nohlsearch<CR>
 
     " ack
-    nmap <leader>/ :Ack 
+    nmap <leader>/ :Ack
 
     " visual shifting (does not exit Visual mode)
     vnoremap < <gv
@@ -295,8 +295,8 @@
      " command-t {
         nnoremap <silent> <leader>f :CommandT<CR>
         let g:CommandTMaxFiles=4000
-        let g:CommandTMaxDepth=10           
-        set wildignore+=*.o,*.obj,.git,.svn 
+        let g:CommandTMaxDepth=10
+        set wildignore+=*.o,*.obj,.git,.svn
      "}
 
      " TagBar {
@@ -327,7 +327,7 @@
 
      "   " SuperTab like snippets behavior.
      "   imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-     "   smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
+     "   smap  <tab>  <right><plug>(neocomplcache_snippets_jump)
 
      "   " Plugin key-mappings.
      "   " Ctrl-k expands snippet & moves to next position
@@ -389,6 +389,11 @@
 " Issues {
     set background=dark
     set noautochdir
+    let sessionman_save_on_exit=0
+    " override some colors with more subtle 256-color
+    hi Normal ctermfg=252
+    hi Search term=reverse cterm=reverse ctermfg=235 ctermbg=228
+    hi Visual term=reverse cterm=reverse ctermfg=235 ctermbg=255
 " }
 
  " Functions {
