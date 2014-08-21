@@ -12,6 +12,7 @@
           " one mac and windows, use * register for copy-paste
           set clipboard=unnamed
         endif
+    set clipboard=unnamed
     " }
 
     " Windows Compatible {
@@ -206,11 +207,6 @@
 
 " Plugins {
 
-    " AutoClose {
-        " Turn autoclose off for now - i dont like it most the time"
-        let b:AutoCloseOn = 0
-    " }
-
     " Python mode {
         " disable folding
         let g:pymode_folding = 0
@@ -219,41 +215,6 @@
     " Misc {
         let g:NERDShutUp=1
         let b:match_ignorecase = 1
-    " }
-
-    " OmniComplete {
-        if has("autocmd") && exists("+omnifunc")
-            autocmd Filetype *
-                \if &omnifunc == "" |
-                \setlocal omnifunc=syntaxcomplete#Complete |
-                \endif
-        endif
-
-        hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-        hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-        hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-        " some convenient mappings
-        " inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-        " inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-        " inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-        " inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-        " inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-        " inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-        " automatically open and close the popup menu / preview window
-        " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        set completeopt=menu,preview,longest
-    " }
-
-    " Ctags {
-        set tags=./tags;/,~/.vimtags
-    " }
-
-    " SnipMate {
-        " Setting the author var
-        " If forking, please overwrite in your .vimrc.local file
-        let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
     " }
 
     " NerdTree {
@@ -270,17 +231,6 @@
         let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=0
     " }
-
-     " Session List {
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        nmap <leader>sl :SessionList<CR>
-        nmap <leader>ss :SessionSave<CR>
-        let sessionman_save_on_exit=0
-     " }
-
-     " Buffer explorer {
-        nmap <leader>b :BufExplorer<CR>
-     " }
 
      " JSON {
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
@@ -299,86 +249,11 @@
         set wildignore+=*.o,*.obj,.git,.svn
      "}
 
-     " TagBar {
-        nnoremap <silent> <leader>c :TagbarToggle<CR>
-     "}
-
      " PythonMode {
      " Disable if python support not present
         if !has('python')
            let g:pymode = 1
         endif
-     " }
-
-     " neocomplcache {
-     "   let g:neocomplcache_enable_at_startup = 1
-     "   let g:neocomplcache_enable_camel_case_completion = 1
-     "   let g:neocomplcache_enable_smart_case = 1
-     "   let g:neocomplcache_enable_underbar_completion = 1
-     "   let g:neocomplcache_min_syntax_length = 100
-     "   let g:neocomplcache_enable_auto_delimiter = 1
-     "   let g:neocomplcache_max_list = 15
-     "   let g:neocomplcache_auto_completion_start_length = 1000
-     "   let g:neocomplcache_force_overwrite_completefunc = 1
-     "   let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
-
-     "   " AutoComplPop like behavior.
-     "   let g:neocomplcache_enable_auto_select = 0
-
-     "   " SuperTab like snippets behavior.
-     "   imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-     "   smap  <tab>  <right><plug>(neocomplcache_snippets_jump)
-
-     "   " Plugin key-mappings.
-     "   " Ctrl-k expands snippet & moves to next position
-     "   " <CR> chooses highlighted value
-     "   imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-     "   smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-     "   inoremap <expr><C-g>   neocomplcache#undo_completion()
-     "   inoremap <expr><C-l>   neocomplcache#complete_common_string()
-     "   inoremap <expr><CR>    neocomplcache#complete_common_string()
-
-     "   " <CR>: close popup
-     "   " <s-CR>: close popup and save indent.
-     "   inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-     "   inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-
-     "   " <TAB>: completion.
-     "   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-     "   inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-     "   " <C-h>, <BS>: close popup and delete backword char.
-     "   inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-     "   inoremap <expr><C-y>  neocomplcache#close_popup()
-
-     "   " Define keyword.
-     "   if !exists('g:neocomplcache_keyword_patterns')
-     "     let g:neocomplcache_keyword_patterns = {}
-     "   endif
-     "   let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-     "   " Enable omni completion.
-     "   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-     "   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-     "   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-     "   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-     "   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-     "   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-     "   " Enable heavy omni completion.
-     "   if !exists('g:neocomplcache_omni_patterns')
-     "       let g:neocomplcache_omni_patterns = {}
-     "   endif
-     "   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-     "   let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-     "   let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-     "   let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
-     "   " For snippet_complete marker.
-     "   if has('conceal')
-     "       set conceallevel=2 concealcursor=i
-     "   endif
-
      " }
 
         set ts=4 sw=4 et

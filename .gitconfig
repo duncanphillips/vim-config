@@ -1,0 +1,14 @@
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[user]
+	name = Duncan Phillips
+	email = duncanphillips@github.com
+[commit]
+	template = ~/.git-commit-template
+[push]
+	default = upstream
+[credential]
+	helper = osxkeychain
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
